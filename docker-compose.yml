@@ -1,0 +1,19 @@
+version: '3.7'
+networks:
+  spring-admin-net:
+    external: true
+services:
+  spring-boot-admin-service:
+    image: cosdin/07-spring-admin-dev:0.0.1-SNAPSHOT
+    ports:
+      - "9090:9090"
+    restart: always
+    networks:
+      - spring-admin-net
+  spring-boot-client-service:
+    image: cosdin/09-spring-admin-client-dev:0.0.1-SNAPSHOT
+    ports:
+      - "5000:5000"
+    restart: always
+    networks:
+      - spring-admin-net
